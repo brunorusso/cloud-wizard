@@ -1,50 +1,37 @@
 package main
 
 import (
-    "io"
     "os"
+    "bufio"
+    "fmt"
 )
 
+func check(e error) {
+    if e != nil {
+        panic(e)
+    }
+}
+
+
 func main() {
-    // open input file
-    fi, err := os.Open("Cloud-Wizard-Report.html")
-    if err != nil {
-        panic(err)
-    }
-    // close fi on exit and check for its returned error
-    defer func() {
-        if err := fi.Close(); err != nil {
-            panic(err)
-        }
-    }()
+    f, err := os.Create("Cloud-Wizard-Report.html")
+    check(err)
 
-    // open output file
-    fo, err := os.Create("Cloud-Wizard-Report.html")
-    if err != nil {
-        panic(err)
-    }
-    // close fo on exit and check for its returned error
-    defer func() {
-        if err := fo.Close(); err != nil {
-            panic(err)
-        }
-    }()
+    Projeto := "Cloud1"
 
-    // make a buffer to keep chunks that are read
-    buf := make([]byte, 1024)
-    for {
-        // read a chunk
-        n, err := fi.Read(buf)
-        if err != nil && err != io.EOF {
-            panic(err)
-        }
-        if n == 0 {
-            break
-        }
+    w := bufio.NewWriter(f)
+    w.WriteString("<html><head><title>Cloud Wizard</title></head><body bgcolor=\"#E7E7E7\">")
+    w.WriteString("<center><H1>Cloud Wizard</H1></center><br><br>")
+    w.WriteString("<img src=\"https://github.com/brunorusso/cloud-wizard/blob/develop/img/Cloud-Wizard-Logo.png\"><br>")
+    w.WriteString(fmt.Sprintf("<b>Projeto: %s </b><br>", Projeto))
 
-        // write a chunk
-        if _, err := fo.Write(buf[:n]); err != nil {
-            panic(err)
-        }
-    }
+
+    check(err)
+
+    w.WriteString("</body></html>")
+    check(err)
+
+    defer f.Close()
+    w.Flush()
+
 }
