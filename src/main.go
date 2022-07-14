@@ -13,9 +13,7 @@ func main() {
 	fmt.Print("Informe o nome do Projeto: ")
 	V_Projeto, _ := reader.ReadString('\n')
 
-
 	fmt.Println("Para as peguntas a seguir, responda s para sim ou n para Não")
-
 
 	fmt.Print("Possui Front com conteúdo estático? (s/n): ")
 	V_Front, _ := reader.ReadString('\n')
@@ -58,6 +56,7 @@ func main() {
 
 
 
+	// Exibe na tela 
 	fmt.Sprintf("<b>Projeto: %s</b><br>", V_Projeto)
 	fmt.Sprintf("<br><b>Site Estático: %s - %s</b>", V_Front, L_Front)
 	fmt.Sprintf("<br><b>API: %s - %s:</b>", V_API, L_API)
@@ -70,4 +69,45 @@ func main() {
 	fmt.Sprintf("<br><b>SNS: %s - %s: </b>", V_SNS, L_SNS)
 
 
+	//Gera arquivo
+	V_Arquivo := "Cloud-Wizard-" + V_Projeto + ".html" 
+	f, err := os.Create(V_Arquivo)
+    	check(err)
+
+    	w := bufio.NewWriter(f)
+	//Head
+    	w.WriteString("<html><head><title>Cloud Wizard</title></head><body bgcolor=\"#E7E7E7\">")
+    	w.WriteString("<center><H1>Cloud Wizard</H1></center><br><br>")
+	//Body
+    	w.WriteString("<img src=\"https://github.com/brunorusso/cloud-wizard/blob/develop/img/Cloud-Wizard-Logo.png\"><br>")
+    	w.WriteString(fmt.Sprintf("<b>Projeto: %s </b><br>", V_Projeto))
+    	w.WriteString("<br><br>")
+    	w.WriteString("<br><br>")
+    	w.WriteString("<br><br>")
+	//Content
+    	w.WriteString("<table border=\"1\">")
+    	w.WriteString("<tr colspan=\"3\">")
+	w.WriteString("<td> cel1 </td>")
+	w.WriteString("<td> cel2 </td>")
+	w.WriteString("<td> cel3 </td>")
+    	w.WriteString("</tr>")
+    	w.WriteString("</table>")
+
+
+  	check(err)
+
+    	w.WriteString("</body></html>")
+    	check(err)
+
+    	defer f.Close()
+    	w.Flush()
+
+
 }
+
+func check(e error) {
+    if e != nil {
+        panic(e)
+    }
+}
+
