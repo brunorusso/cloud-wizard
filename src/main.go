@@ -5,6 +5,7 @@ import (
 	"bufio"
 	"os"
 	"time"
+	"strings"
 )
 
 func main() {
@@ -43,6 +44,7 @@ func main() {
 	fmt.Print("Possui SNS? (s/n): ")
 	V_SNS, _ := reader.ReadString('\n')
 
+	check_resposta(V_SNS)
 
 	// Links
 	L_Front := "https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html"
@@ -54,6 +56,7 @@ func main() {
 	L_Lambda := "https://docs.aws.amazon.com/lambda/latest/dg/index.html"
 	L_SQS := "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html"
 	L_SNS := "https://docs.aws.amazon.com/sns/latest/dg/index.html"
+
 
 
 
@@ -81,51 +84,50 @@ func main() {
 	//Head
     	w.WriteString("<html><head><title>Cloud Wizard</title></head>")
     	w.WriteString("<style>")
-    	w.WriteString(".recurso {background-color: lightblue; text-align: center;}")
+    	w.WriteString(".cdn {background-color: lightblue; text-align: center;}")
+    	w.WriteString(".comp {background-color: lightblue; text-align: center;}")
     	w.WriteString("</style>")
     	w.WriteString("</head>")
 	//Body
-		w.WriteString("<html><head><title>Cloud Wizard</title></head><body bgcolor=\"#E7E7E7\">")
-		w.WriteString("<center><table border=\"0\" width=\"90%\"><tr><td width=\"25%\"><img src=\"https://github.com/brunorusso/cloud-wizard/blob/develop/img/Cloud-Wizard-Logo.png\"></td>")
-		w.WriteString("<td><H1><center>Cloud Wizard</H1></center></td></tr></table></center>")
-		w.WriteString("<br>")
-    	w.WriteString(fmt.Sprintf("<H1>Projeto: <b> %s </b> </H1><br>", V_Projeto))
+	w.WriteString("<html><head><title>Cloud Wizard</title></head><body bgcolor=\"#E7E7E7\">")
+	w.WriteString("<center><table border=\"0\" width=\"90%\"><tr><td width=\"25%\"><img src=\"https://github.com/brunorusso/cloud-wizard/blob/develop/img/Cloud-Wizard-Logo.png\"></td>")
+	w.WriteString(fmt.Sprintf("<td><H1><center>Projeto: %s </H1></center></td></tr></table></center>", V_Projeto))
     	w.WriteString("<br><br><hr>")
 	//Content
     	w.WriteString("<table border=\"1\" width=\"80%\">")
-		w.WriteString("<tr>")
-		w.WriteString("<th width=\"20%\">Camada</th>")
-		w.WriteString("<th width=\"80%\" colspan=\"3\">Recursos</th>")
-		w.WriteString("</tr>")
+	w.WriteString("<tr>")
+	w.WriteString("<th width=\"20%\">Camada</th>")
+	w.WriteString("<th width=\"80%\" colspan=\"3\">Recursos</th>")
+	w.WriteString("</tr>")
     	w.WriteString("<tr>")
-		w.WriteString("<td>CDN e Aceleração de Conteúdo</td>")
-		w.WriteString(fmt.Sprintf("<td> <div class=\"recurso\"><a href=\"%s\" target=\"_blank\"><img src=\"Arch_Amazon-CloudFront_32.png\"> <br>CloudFront</a></div></td>", L_Front))
-		w.WriteString(fmt.Sprintf("<td> <div class=\"recurso\"><a href=\"%s\" target=\"_blank\"><img src=\"Arch_Amazon-Simple-Storage-Service_32.png\"><br>S3</a></div</td>"))
-		w.WriteString(fmt.Sprintf("<td> <div class=\"recurso\"><a href=\"%s\" target=\"_blank\"><img src=\"\"><br>APIGateway</a></div></td>"))
+	w.WriteString("<td> <div class=\"cdn\">CDN e Aceleração de Conteúdo</div></td>")
+	w.WriteString(fmt.Sprintf("<td> <div class=\"cdn\"><a href=\"%s\" target=\"_blank\"><img src=\"Arch_Amazon-CloudFront_32.png\"> <br>CloudFront</a></div></td>", L_Front))
+	w.WriteString(fmt.Sprintf("<td> <div class=\"cdn\"><a href=\"%s\" target=\"_blank\"><img src=\"Arch_Amazon-Simple-Storage-Service_32.png\"><br>S3</a></div</td>"))
+	w.WriteString(fmt.Sprintf("<td> <div class=\"cdn\"><a href=\"%s\" target=\"_blank\"><img src=\"\"><br>APIGateway</a></div></td>"))
     	w.WriteString("</tr>")
     	w.WriteString("<tr>")
-		w.WriteString("<td>Computação</td>")
-		w.WriteString(fmt.Sprintf("<td> <div class=\"recurso\"><a href=\"%s\" target=\"_blank\"><img src=\"Arch_Amazon-Elastic-Container-Kubernetes_32.png\"><br>EKS</a></div</td>"))
-		w.WriteString(fmt.Sprintf("<td> <div class=\"recurso\"><a href=\"%s\" target=\"_blank\"><img src=\"Arch_Amazon-Elastic-Container-Service_32.png\"><br>ECS</a></div</td>"))
-		w.WriteString(fmt.Sprintf("<td> <div class=\"recurso\"><a href=\"%s\" target=\"_blank\"><img src=\"Arch_AWS-Lambda_32.png\"><br>Lambda</a></div</td>"))
+	w.WriteString("<td <div class\"comp\">Computação</div></td>")
+	w.WriteString(fmt.Sprintf("<td> <div class=\"comp\"><a href=\"%s\" target=\"_blank\"><img src=\"Arch_Amazon-Elastic-Container-Kubernetes_32.png\"><br>EKS</a></div</td>"))
+	w.WriteString(fmt.Sprintf("<td> <div class=\"comp\"><a href=\"%s\" target=\"_blank\"><img src=\"Arch_Amazon-Elastic-Container-Service_32.png\"><br>ECS</a></div</td>"))
+	w.WriteString(fmt.Sprintf("<td> <div class=\"comp\"><a href=\"%s\" target=\"_blank\"><img src=\"Arch_AWS-Lambda_32.png\"><br>Lambda</a></div</td>"))
     	w.WriteString("</tr>")
     	w.WriteString("<tr>")
-		w.WriteString("<td>Banco de Dados e Cache</td>")
-		w.WriteString(fmt.Sprintf("<td> <div class=\"recurso\"><a href=\"%s\" target=\"_blank\"><img src=\"Arch_Amazon-RDS_32.png\"><br>RDS</a></div</td>"))
-		w.WriteString(fmt.Sprintf("<td> <div class=\"recurso\"><a href=\"%s\" target=\"_blank\"><img src=\"Arch_Amazon-DynamoDB_32.png\"><br>DynamoDB</a></div</td>"))
-		w.WriteString(fmt.Sprintf("<td> <div class=\"recurso\"><a href=\"%s\" target=\"_blank\"><img src=\"Arch_Amazon-ElastiCache_32.png\"><br>Cache</a></div</td>"))
+	w.WriteString("<td>Banco de Dados e Cache</td>")
+	w.WriteString(fmt.Sprintf("<td> <div class=\"recurso\"><a href=\"%s\" target=\"_blank\"><img src=\"Arch_Amazon-RDS_32.png\"><br>RDS</a></div</td>"))
+	w.WriteString(fmt.Sprintf("<td> <div class=\"recurso\"><a href=\"%s\" target=\"_blank\"><img src=\"Arch_Amazon-DynamoDB_32.png\"><br>DynamoDB</a></div</td>"))
+	w.WriteString(fmt.Sprintf("<td> <div class=\"recurso\"><a href=\"%s\" target=\"_blank\"><img src=\"Arch_Amazon-ElastiCache_32.png\"><br>Cache</a></div</td>"))
     	w.WriteString("</tr>")
     	w.WriteString("<tr>")
-		w.WriteString("<td>Integração</td>")
-		w.WriteString(fmt.Sprintf("<td> <div class=\"recurso\"><a href=\"%s\" target=\"_blank\"><img src=\"\"></a></div</td>"))
-		w.WriteString(fmt.Sprintf("<td> <div class=\"recurso\"><a href=\"%s\" target=\"_blank\"><img src=\"\"></a></div</td>"))
-		w.WriteString(fmt.Sprintf("<td> <div class=\"recurso\"><a href=\"%s\" target=\"_blank\"><img src=\"\"></a></div</td>"))
+	w.WriteString("<td>Integração</td>")
+	w.WriteString(fmt.Sprintf("<td> <div class=\"recurso\"><a href=\"%s\" target=\"_blank\"><img src=\"\"></a></div</td>"))
+	w.WriteString(fmt.Sprintf("<td> <div class=\"recurso\"><a href=\"%s\" target=\"_blank\"><img src=\"\"></a></div</td>"))
+	w.WriteString(fmt.Sprintf("<td> <div class=\"recurso\"><a href=\"%s\" target=\"_blank\"><img src=\"\"></a></div</td>"))
     	w.WriteString("</tr>")
     	w.WriteString("<tr>")
-		w.WriteString("<td>Governança</td>")
-		w.WriteString(fmt.Sprintf("<td> <div class=\"recurso\"><a href=\"%s\" target=\"_blank\"><img src=\"\"></a></div</td>"))
-		w.WriteString(fmt.Sprintf("<td> <div class=\"recurso\"><a href=\"%s\" target=\"_blank\"><img src=\"\"></a></div</td>"))
-		w.WriteString(fmt.Sprintf("<td> <div class=\"recurso\"><a href=\"%s\" target=\"_blank\"><img src=\"\"></a></div</td>"))
+	w.WriteString("<td>Governança</td>")
+	w.WriteString(fmt.Sprintf("<td> <div class=\"recurso\"><a href=\"%s\" target=\"_blank\"><img src=\"\"></a></div</td>"))
+	w.WriteString(fmt.Sprintf("<td> <div class=\"recurso\"><a href=\"%s\" target=\"_blank\"><img src=\"\"></a></div</td>"))
+	w.WriteString(fmt.Sprintf("<td> <div class=\"recurso\"><a href=\"%s\" target=\"_blank\"><img src=\"\"></a></div</td>"))
     	w.WriteString("</tr>")
     	w.WriteString("</table>")
 
@@ -147,5 +149,13 @@ func check(e error) {
     if e != nil {
         panic(e)
     }
+}
+
+
+func check_resposta(x string) {
+	if strings.Contains(x, "s"){
+		fmt.Println("sim")
+	}
+
 }
 
