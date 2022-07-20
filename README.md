@@ -6,3 +6,5 @@ This report is a single HTML page with:
 
 - links to AWS products;
 - architecture template by draw.io 
+
+[![Go](https://github.com/brunorusso/cloud-wizard/actions/workflows/go.yml/badge.svg)](https://github.com/brunorusso/cloud-wizard/actions/workflows/go.yml)
