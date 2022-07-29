@@ -75,17 +75,17 @@ func main() {
 	L_Cache := "https://docs.aws.amazon.com/sns/latest/dg/index.html"
 
 	// Image links
-	IMG_Front := "https://brunorusso.com.br/icons/Arch_Amazon-CloudFront_32.png"
-	IMG_S3 := "https://brunorusso.com.br/icons/Arch_Amazon-Simple-Storage-Service_32.png"
-	IMG_API := "https://brunorusso.com.br/icons/"
-	IMG_EKS := "https://brunorusso.com.br/icons/Arch_Amazon-Elastic-Container-Kubernetes_32.png"
-	IMG_ECS := "https://brunorusso.com.br/icons/Arch_Amazon-Elastic-Container-Service_32.png"
-	IMG_RDS := "https://brunorusso.com.br/icons/Arch_Amazon-RDS_32.png"
-	IMG_DynamoDB := "https://brunorusso.com.br/icons/Arch_Amazon-DynamoDB_32.png"
-	IMG_Lambda := "https://brunorusso.com.br/icons/Arch_AWS-Lambda_32.png"
-	IMG_SQS := "https://brunorusso.com.br/icons/"
-	IMG_SNS := "https://brunorusso.com.br/icons/"
-	IMG_Cache := "https://brunorusso.com.br/icons/Arch_Amazon-ElastiCache_32.png"
+	IMG_Front := "https://brunorusso.com.br/icones/Arch_Amazon-CloudFront_32.png"
+	IMG_S3 := "https://brunorusso.com.br/icones/Arch_Amazon-Simple-Storage-Service_32.png"
+	IMG_API := "https://brunorusso.com.br/icones/"
+	IMG_EKS := "https://brunorusso.com.br/icones/Arch_Amazon-Elastic-Container-Kubernetes_32.png"
+	IMG_ECS := "https://brunorusso.com.br/icones/Arch_Amazon-Elastic-Container-Service_32.png"
+	IMG_RDS := "https://brunorusso.com.br/icones/Arch_Amazon-RDS_32.png"
+	IMG_DynamoDB := "https://brunorusso.com.br/icones/Arch_Amazon-DynamoDB_32.png"
+	IMG_Lambda := "https://brunorusso.com.br/icones/Arch_AWS-Lambda_32.png"
+	IMG_SQS := "https://brunorusso.com.br/icones/"
+	IMG_SNS := "https://brunorusso.com.br/icones/"
+	IMG_Cache := "https://brunorusso.com.br/icones/Arch_Amazon-ElastiCache_32.png"
 
 	// Exibe na tela 
 	fmt.Sprintf("<b>Projeto: %s</b><br>", V_Projeto)
@@ -111,21 +111,21 @@ func main() {
 	//Head
 	w.WriteString("<html><head><title>Cloud Wizard</title></head>")
    	w.WriteString("<style>")
-   	w.WriteString(".table {background-color: #EAECEE; border: 1px solid; border-color: #566573; border-radius: 5px; border-spacing: 0;}")
-   	w.WriteString(".par {background-color: #D4E6F1; text-align: center; color: black; border: 1px solid; border-color: #566573;}")
-   	w.WriteString(".impar {background-color: #D1F2EB; text-align: center; color: black; border: 1px solid; border-color: #566573;}")
-   	w.WriteString("a.ativo a.ativo:link, a.ativo:visited, a.ativo:hover, a.ativo:active {color: red;}")
+   	w.WriteString(".table {background-color: #EAECEE; border: 1px solid; border-color: #566573; border-radius: 5px; border-spacing: 0; width=\"90%\"}")
+	w.WriteString(".cabecalho {background-color: #0199c0; color: black}")
+   	w.WriteString(".par {background-color: #00c0ef; text-align: center; border: 1px solid; border-color: #566573;}")
+   	w.WriteString(".impar {background-color: #D1F2EB; text-align: center; border: 1px solid; border-color: #566573;}")
+   	w.WriteString("a.ativo a.ativo:link, a.ativo:visited, a.ativo:hover, a.ativo:active {color: black;}")
    	w.WriteString("a.inativo a.inativo:link, a.inativo:visited, a.inativo:hover, a.inativo:active {color: black;}")
    	w.WriteString("</style>")
    	w.WriteString("</head>")
 	//Body
-	w.WriteString("<html><head><title>Cloud Wizard</title></head><body bgcolor=\"#E7E7E7\">")
-	w.WriteString("<center><table border=\"0\" width=\"90%\"><tr><td width=\"25%\"><img src=\"https://github.com/brunorusso/cloud-wizard/blob/develop/img/Cloud-Wizard-Logo.png\"></td>")
-	w.WriteString(fmt.Sprintf("<td><H1><center>Projeto: %s </H1></center></td></tr></table></center>", V_Projeto))    	
+	w.WriteString("<html><head><title>Cloud Wizard</title></head><body bgcolor=\"#ebf0f4\">")
+	w.WriteString("<center><table border=\"0\" width=\"90%\"><tr><td width=\"25%\"><img src=\"https://brunorusso.com.br/icones/Cloud-Wizard-Logo.png\"></td>")	w.WriteString(fmt.Sprintf("<td><H1><center>Projeto: <br>%s </H1></center></td></tr></table></center>", V_Projeto))    	
 	w.WriteString("<br><br><hr>")
 	//Content
 	w.WriteString("<table class=\"table\" align=\"center\">")
-	w.WriteString("<tr>")
+	w.WriteString("<tr class=\"cabecalho\">")
 	w.WriteString("<th width=\"20%\">Camada</th>")
 	w.WriteString("<th width=\"80%\" colspan=\"3\">Recursos</th>")
 	w.WriteString("</tr>")
