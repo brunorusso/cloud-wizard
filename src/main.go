@@ -133,7 +133,8 @@ func main() {
    	w.WriteString("</head>")
 	//Body
 	w.WriteString("<html><head><title>Cloud Wizard</title></head><body bgcolor=\"#ebf0f4\">")
-	w.WriteString("<center><table border=\"0\" width=\"90%\"><tr><td width=\"25%\"><img src=\"https://brunorusso.com.br/icones/Cloud-Wizard-Logo.png\"></td>")	w.WriteString(fmt.Sprintf("<td><H1><center>Projeto: <br>%s </H1></center></td></tr></table></center>", V_Projeto))
+	w.WriteString("<center><table border=\"0\" width=\"90%\"><tr><td width=\"25%\"><img src=\"https://brunorusso.com.br/icones/Cloud-Wizard-Logo.png\"></td>")	
+	w.WriteString(fmt.Sprintf("<td><H1><center>Projeto: <br>%s </H1></center></td></tr></table></center>", V_Projeto))
 	w.WriteString("<br><br><hr>")
 	//Content
 	w.WriteString("<table class=\"table\" align=\"center\">")
