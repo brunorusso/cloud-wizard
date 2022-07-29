@@ -73,19 +73,31 @@ func main() {
 	L_SQS := "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html"
 	L_SNS := "https://docs.aws.amazon.com/sns/latest/dg/index.html"
 	L_Cache := "https://docs.aws.amazon.com/sns/latest/dg/index.html"
+	L_WAT := "https://brunorusso.com.br/icones/Arch_AWS-Well-Architected-Tool_32.png"
+	L_BKP := "https://brunorusso.com.br/icones/Arch_AWS-Backup_32.png"
+	L_SSL := "https://brunorusso.com.br/icones/Arch_AWS-Certificate-Manager_32.png"
+	L_SECRETS := "https://brunorusso.com.br/icones/Arch_AWS-Secrets-Manager_32.png"
+	L_KMS := "https://brunorusso.com.br/icones/Arch_AWS-Key-Management-Service_32.png"
+	L_ARQ := "https://brunorusso.com.br/icones/Cloud-Wizard-Logo.png"
 
 	// Image links
 	IMG_Front := "https://brunorusso.com.br/icones/Arch_Amazon-CloudFront_32.png"
 	IMG_S3 := "https://brunorusso.com.br/icones/Arch_Amazon-Simple-Storage-Service_32.png"
-	IMG_API := "https://brunorusso.com.br/icones/"
+	IMG_API := "https://brunorusso.com.br/icones/Arch_Amazon-API-Gateway_32.png"
 	IMG_EKS := "https://brunorusso.com.br/icones/Arch_Amazon-Elastic-Container-Kubernetes_32.png"
 	IMG_ECS := "https://brunorusso.com.br/icones/Arch_Amazon-Elastic-Container-Service_32.png"
 	IMG_RDS := "https://brunorusso.com.br/icones/Arch_Amazon-RDS_32.png"
 	IMG_DynamoDB := "https://brunorusso.com.br/icones/Arch_Amazon-DynamoDB_32.png"
 	IMG_Lambda := "https://brunorusso.com.br/icones/Arch_AWS-Lambda_32.png"
-	IMG_SQS := "https://brunorusso.com.br/icones/"
-	IMG_SNS := "https://brunorusso.com.br/icones/"
+	IMG_SQS := "https://brunorusso.com.br/icones/Arch_Amazon-Simple-Queue-Service_32.png"
+	IMG_SNS := "https://brunorusso.com.br/icones/Arch_Amazon-Simple-Notification-Service_32.png"
 	IMG_Cache := "https://brunorusso.com.br/icones/Arch_Amazon-ElastiCache_32.png"
+	IMG_WAT := "https://brunorusso.com.br/icones/Arch_AWS-Well-Architected-Tool_32.png"
+	IMG_BKP := "https://brunorusso.com.br/icones/Arch_AWS-Backup_32.png"
+	IMG_SSL := "https://brunorusso.com.br/icones/Arch_AWS-Certificate-Manager_32.png"
+	IMG_SECRETS := "https://brunorusso.com.br/icones/Arch_AWS-Secrets-Manager_32.png"
+	IMG_KMS := "https://brunorusso.com.br/icones/Arch_AWS-Key-Management-Service_32.png"
+	IMG_ARQ := "https://brunorusso.com.br/icones/Cloud-Wizard-Logo.png"
 
 	// Exibe na tela 
 	fmt.Sprintf("<b>Projeto: %s</b><br>", V_Projeto)
@@ -155,12 +167,21 @@ func main() {
     w.WriteString("</tr>")
     w.WriteString("<tr>")
 	w.WriteString("<td div class=\"par\">Governança</div></td>")
-	w.WriteString(fmt.Sprintf("<td class=\"par\"> <div><a class=\"%s\" href=\"%s\" target=\"_blank\"><img src=\"\"></a></div</td>"))
-	w.WriteString(fmt.Sprintf("<td class=\"par\"> <div><a class=\"%s\" href=\"%s\" target=\"_blank\"><img src=\"\"></a></div</td>"))
-	w.WriteString(fmt.Sprintf("<td class=\"par\"> <div><a class=\"%s\" href=\"%s\" target=\"_blank\"><img src=\"\"></a></div</td>"))
+	w.WriteString(fmt.Sprintf("<td class=\"par\"> <div><a class=\"ativo\" href=\"%s\" target=\"_blank\"><img src=\"%s\">WAF</a></div</td>"), L_WAT, IMG_WAT)
+	w.WriteString(fmt.Sprintf("<td class=\"par\"> <div><a class=\"ativo\" href=\"%s\" target=\"_blank\"><img src=\"%s\">Backup</a></div</td>"), L_BKP, IMG_BKP)
+	w.WriteString(fmt.Sprintf("<td class=\"par\"> <div><a class=\"%s\" href=\"%s\" target=\"_blank\"><img src=\"%s\"></a></div</td>"))
 	w.WriteString("</tr>")
+    w.WriteString("<tr>")
+	w.WriteString("<td div class=\"impar\">Segurança</div></td>")
+	w.WriteString(fmt.Sprintf("<td class=\"impar\"> <div><a class=\"ativo\" href=\"%s\" target=\"_blank\"><img src=\"%s\"><br>Secrets Manager</a></div</td>", L_SECRETS IMG_SECRETS))
+	w.WriteString(fmt.Sprintf("<td class=\"impar\"> <div><a class=\"ativo\" href=\"%s\" target=\"_blank\"><img src=\"%s\"><br>Certificate Manager</a></div</td>", L_SSL, IMG_SSL))
+	w.WriteString(fmt.Sprintf("<td class=\"impar\"> <div><a class=\"ativo\" href=\"%s\" target=\"_blank\"><img src=\"%s\"><br>KMS</a></div</td>"), L_KMS, IMG_KMS)
+    w.WriteString("</tr>")
     w.WriteString("</table>")
+	w.WriteString("<br><br><hr>")
+	w.WriteString(fmt.Sprintf("<center><table border=\"0\" width=\"90%\"><tr><td width=\"25%\"><img src=\"%s\"></td>"), IMG_ARQ)
 
+	w.WriteString("<br><br><hr>")
 	//Footer
 	w.WriteString(fmt.Sprintf("<center><h5>Wizard criado em: %s<h5></center>", V_Hoje))
 
