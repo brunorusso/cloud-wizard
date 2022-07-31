@@ -6,7 +6,11 @@ The Cloud Wizard is a program wrote in GoLang, with the capacity to generate a H
 
 This report is a single HTML page with:
 
-- links to AWS products;
-- architecture template by draw.io 
+- Links to AWS products
+- Architecture example
 
+Release informaion: (RELEASE.md)
+
+<hr>
+Developer Status: 
 [![Go](https://github.com/brunorusso/cloud-wizard/actions/workflows/go.yml/badge.svg)](https://github.com/brunorusso/cloud-wizard/actions/workflows/go.yml)
