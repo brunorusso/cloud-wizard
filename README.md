@@ -9,7 +9,7 @@ This report is a single HTML page with:
 - Links to AWS products
 - Architecture example
 
-Release informaion: [RELEASE.md]
+Release informaion: [RELEASE.md](RELEASE.md)
 
 <hr>
 Developer Status: 
