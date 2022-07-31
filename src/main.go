@@ -83,7 +83,7 @@ func main() {
 	L_SSL := "https://brunorusso.com.br/icones/Arch_AWS-Certificate-Manager_32.png"
 	L_SECRETS := "https://brunorusso.com.br/icones/Arch_AWS-Secrets-Manager_32.png"
 	L_KMS := "https://brunorusso.com.br/icones/Arch_AWS-Key-Management-Service_32.png"
-	L_ARQ := "https://brunorusso.com.br/icones/Cloud-Wizard-Logo.png"
+	L_ARQ := "https://brunorusso.com.br/icones/aws-refarch-wordpress-v20171026.jpeg"
 	L_MSK := "dsds"
 	
 	// Image links
@@ -103,7 +103,7 @@ func main() {
 	IMG_SSL := "https://brunorusso.com.br/icones/Arch_AWS-Certificate-Manager_32.png"
 	IMG_SECRETS := "https://brunorusso.com.br/icones/Arch_AWS-Secrets-Manager_32.png"
 	IMG_KMS := "https://brunorusso.com.br/icones/Arch_AWS-Key-Management-Service_32.png"
-	IMG_ARQ := "https://brunorusso.com.br/icones/Cloud-Wizard-Logo.png"
+	IMG_ARQ := "https://brunorusso.com.br/icones/aws-refarch-wordpress-v20171026.jpeg"
 	IMG_MSK	:= "dsds"
 
 	// Exibe na tela 
@@ -119,7 +119,8 @@ func main() {
 	fmt.Sprintf("<br><b>SNS: %s - %s: </b>", V_SNS, L_SNS)
 
 	// Create Variables
-	V_Hoje := time.Now()
+	V_Agora := time.Now()
+	V_Hoje := V_Agora.Format("January 02, 2006 15:04:05")
 
 	//Gera arquivo
 	V_Arquivo := "Cloud-Wizard-Projeto.html" 
@@ -135,19 +136,23 @@ func main() {
    	w.WriteString(".par {background-color: #00c0ef; text-align: center; border: 1px solid; border-color: #566573; font-family: verdana; font-size: 20px;}")
    	w.WriteString(".impar {background-color: #D1F2EB; text-align: center; border: 1px solid; border-color: #566573; font-family: verdana; font-size: 20px;}")
    	w.WriteString("a.ativo a.ativo:link, a.ativo:visited, a.ativo:hover, a.ativo:active {color: black;}")
-   	w.WriteString("a.inativo a.inativo:link, a.inativo:visited, a.inativo:hover, a.inativo:active {color: black;}")
-	w.WriteString(".projeto {color: #f6c90e; font-family: verdana; font-size: 30px; text-align: center;}")
+   	w.WriteString("a.inativo a.inativo:link, a.inativo:visited, a.inativo:hover, a.inativo:active {color: #808080; background-color: transparent;}")
+	w.WriteString(".projeto {color: #f6c90e; font-family: verdana; font-size: 30px; text-align: center; background-color: transparent;}")
 	w.WriteString(".texto {color: black; font-family: verdana; font-size: 20px; text-align: left; line-height: 1.6;}")
+	w.WriteString(".texto2 {color: black; font-family: verdana; font-size: 20px; text-align: center; line-height: 1.6;}")
 	w.WriteString("a.secao {color: black; font-family: verdana; font-size: 20px; text-align: left; line-height: 1.6;}")
-   	w.WriteString("</style>")
+	w.WriteString("h2 {color: black; font-family: verdana; font-size: 25px; text-align: center; line-height: 1.6;}")
+	w.WriteString("</style>")
    	w.WriteString("</head>")
 	//Body
 	w.WriteString("<html><head><title>Cloud Wizard</title></head><body bgcolor=\"#ebf0f4\">")
-	w.WriteString(fmt.Sprintf("<center><table border=\"0\" width=\"90%\" align=\"center\"><tr><td width=\"25%\"><a href=\" %s \"><img src=\"https://brunorusso.com.br/icones/Cloud-Wizard-Logo.png\"> %s </a></td>", L_HOME, L_HOME))
+	w.WriteString("<table border=\"0\" width=\"90%\" align=\"center\">")
+	w.WriteString("<tr>")
+	w.WriteString(fmt.Sprintf("<td width=\"25%\"><a href=\"%s\"><img src=\"https://brunorusso.com.br/icones/Cloud-Wizard-Logo.png\"></a></td>", L_HOME))
 	w.WriteString(fmt.Sprintf("<td><H1><center>Projeto: </H1><br><div class=\"projeto\">%s</div></center></td></tr></table></center>", V_Projeto))
 	w.WriteString("<br><br><hr>")
 	//Introdution
-	w.WriteString("<table border=\"0\" width=\"80%\" align=\"center\">")
+	w.WriteString("<center><table border=\"0\" width=\"80%\" align=\"center\">")
     w.WriteString("<tr>")
 	w.WriteString("<td><div class=\"texto\">Cloud Wizard é um facilitador, que tem como objetivo apresentar de forma resumida os principais aspectos necessários e que devem ser levados em consideração em uma Aplicação Cloud!</div>")
 	w.WriteString("<div class=\"texto\">Os links apresentados são da própria AWS e devem ser os consultados para sanar dúvidas e entender como cara recurso deve ser criado e configurado</div>")
@@ -158,10 +163,10 @@ func main() {
 	w.WriteString("<div><a class=\"secao\" href=\"#Cap2\">2. Exemplo de arquitetura</a></div>")
 	w.WriteString("<div><a class=\"secao\" href=\"#Cap3\">3. Contribua com este projeto</a></div>")
     w.WriteString("</td></tr>")
-    w.WriteString("</table>")
+    w.WriteString("</table></center>")
 	w.WriteString("<br><br><hr>")
 	//Content
-    w.WriteString("<center><h2 id=\"Cap1\">1. Serviços Utilizados</h2></center>")
+    w.WriteString("<h2 id=\"Cap1\">1. Serviços Utilizados</h2>")
 	w.WriteString("<table class=\"table\" align=\"center\">")
 	w.WriteString("<tr class=\"cabecalho\">")
 	w.WriteString("<th width=\"20%\">Camada</th>")
@@ -193,29 +198,31 @@ func main() {
     w.WriteString("</tr>")
     w.WriteString("<tr>")
 	w.WriteString("<td div class=\"par\">Segurança</div></td>")
-	w.WriteString(fmt.Sprintf("<td class=\"impar\"> <div><a class=\"ativo\" href=\"%s\" target=\"_blank\"><img src=\"%s\"><br>Secrets Manager</a></div</td>", L_SECRETS, IMG_SECRETS))
-	w.WriteString(fmt.Sprintf("<td class=\"impar\"> <div><a class=\"ativo\" href=\"%s\" target=\"_blank\"><img src=\"%s\"><br>Certificate Manager</a></div</td>", L_SSL, IMG_SSL))
-	w.WriteString(fmt.Sprintf("<td class=\"impar\"> <div><a class=\"ativo\" href=\"%s\" target=\"_blank\"><img src=\"%s\"><br>KMS</a></div</td>", L_KMS, IMG_KMS))
+	w.WriteString(fmt.Sprintf("<td class=\"par\"> <div><a class=\"ativo\" href=\"%s\" target=\"_blank\"><img src=\"%s\"><br>Secrets Manager</a></div</td>", L_SECRETS, IMG_SECRETS))
+	w.WriteString(fmt.Sprintf("<td class=\"par\"> <div><a class=\"ativo\" href=\"%s\" target=\"_blank\"><img src=\"%s\"><br>Certificate Manager</a></div</td>", L_SSL, IMG_SSL))
+	w.WriteString(fmt.Sprintf("<td class=\"par\"> <div><a class=\"ativo\" href=\"%s\" target=\"_blank\"><img src=\"%s\"><br>KMS</a></div</td>", L_KMS, IMG_KMS))
     w.WriteString("</tr>")
     w.WriteString("<tr>")
 	w.WriteString("<td div class=\"impar\">Governança</div></td>")
-	w.WriteString(fmt.Sprintf("<td class=\"par\"> <div><a class=\"ativo\" href=\"%s\" target=\"_blank\"><img src=\"%s\"><br>WAF</a></div</td>", L_WAT, IMG_WAT))
-	w.WriteString(fmt.Sprintf("<td class=\"par\"> <div><a class=\"ativo\" href=\"%s\" target=\"_blank\"><img src=\"%s\"><br>Backup</a></div</td>", L_BKP, IMG_BKP))
-	w.WriteString(fmt.Sprintf("<td class=\"par\"> <div><a class=\"%s\" href=\"%s\" target=\"_blank\"><img src=\"%s\"></a></div</td>"))
+	w.WriteString(fmt.Sprintf("<td class=\"impar\"> <div><a class=\"ativo\" href=\"%s\" target=\"_blank\"><img src=\"%s\"><br>WAF</a></div</td>", L_WAT, IMG_WAT))
+	w.WriteString(fmt.Sprintf("<td class=\"impar\"> <div><a class=\"ativo\" href=\"%s\" target=\"_blank\"><img src=\"%s\"><br>Backup</a></div</td>", L_BKP, IMG_BKP))
+	w.WriteString(fmt.Sprintf("<td class=\"impar\"></td>"))
 	w.WriteString("</tr>")
     w.WriteString("</table>")
 	w.WriteString("<br><br><hr>")
-	w.WriteString("<center><h2 id=\"Cap2\">2. Exemplo de Arquitetura</h2></center>")
-	w.WriteString(fmt.Sprintf("<center><table border=\"0\" width=\"90%\">< a href=\"%s\"><tr><td width=\"25%\"><img src=\"%s\"></a></td>", L_ARQ, IMG_ARQ))
-
+	w.WriteString("<h2 id=\"Cap2\">2. Exemplo de Arquitetura</h2>")
+	w.WriteString("<center><table border=\"0\" width=\"90%\"><tr><td>")
+	w.WriteString(fmt.Sprintf("<a href=\"%s\"><tr><td width=\"25%\"><img src=\"%s\"></a>", L_ARQ, IMG_ARQ))
+	w.WriteString("</td></tr></table></center>")
 	w.WriteString("<br><br>")
 	//Footer
-	w.WriteString(fmt.Sprintf("<center><h5>Wizard criado em: %s<h5></center>", V_Hoje))
+	w.WriteString(fmt.Sprintf("<center><div class=\"texto2\">Wizard criado em: %s</div></center>", V_Hoje))
 	w.WriteString("<br><br><hr>")
-	w.WriteString("<center><h2 id=\"Cap3\">3. Contribua com este projeto</h2></center>")
+	w.WriteString("<h2 id=\"Cap3\">3. Contribua com este projeto</h2>")
+	w.WriteString(fmt.Sprintf("<center><div class=\"texto2\">Link do projeto no GitHub: <a href=\"%s\">%s</a></div></center>", L_HOME, L_HOME))
 
   	check(err)
-    	w.WriteString("</body></html>")
+//    	w.WriteString("</body></html>")
     	check(err)
     	defer f.Close()
     	w.Flush()
@@ -226,7 +233,6 @@ func check(e error) {
         panic(e)
     }
 }
-
 
 func check_resposta(x string) string {
 	if strings.Contains(x, "s"){
