@@ -9,8 +9,9 @@ This report is a single HTML page with:
 - Links to AWS products
 - Architecture example
 
-Release informaion: (RELEASE.md)
+Release informaion: [RELEASE.md]
 
 <hr>
 Developer Status: 
+
 [![Go](https://github.com/brunorusso/cloud-wizard/actions/workflows/go.yml/badge.svg)](https://github.com/brunorusso/cloud-wizard/actions/workflows/go.yml)
