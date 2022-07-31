@@ -78,13 +78,13 @@ func main() {
 	L_SQS := "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html"
 	L_SNS := "https://docs.aws.amazon.com/sns/latest/dg/index.html"
 	L_Cache := "https://docs.aws.amazon.com/sns/latest/dg/index.html"
-	L_WAT := "https://brunorusso.com.br/icones/Arch_AWS-Well-Architected-Tool_32.png"
-	L_BKP := "https://brunorusso.com.br/icones/Arch_AWS-Backup_32.png"
-	L_SSL := "https://brunorusso.com.br/icones/Arch_AWS-Certificate-Manager_32.png"
-	L_SECRETS := "https://brunorusso.com.br/icones/Arch_AWS-Secrets-Manager_32.png"
-	L_KMS := "https://brunorusso.com.br/icones/Arch_AWS-Key-Management-Service_32.png"
+	L_WAT := "https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html"
+	L_BKP := "https://aws.amazon.com/pt/backup"
+	L_SSL := "https://aws.amazon.com/pt/certificate-manager/"
+	L_SECRETS := "https://aws.amazon.com/pt/secrets-manager/"
+	L_KMS := "https://aws.amazon.com/pt/kms/"
 	L_ARQ := "https://brunorusso.com.br/icones/aws-refarch-wordpress-v20171026.jpeg"
-	L_MSK := "dsds"
+	L_MSK := "https://aws.amazon.com/pt/msk/"
 	
 	// Image links
 	IMG_Front := "https://brunorusso.com.br/icones/Arch_Amazon-CloudFront_32.png"
@@ -104,19 +104,7 @@ func main() {
 	IMG_SECRETS := "https://brunorusso.com.br/icones/Arch_AWS-Secrets-Manager_32.png"
 	IMG_KMS := "https://brunorusso.com.br/icones/Arch_AWS-Key-Management-Service_32.png"
 	IMG_ARQ := "https://brunorusso.com.br/icones/aws-refarch-wordpress-v20171026.jpeg"
-	IMG_MSK	:= "dsds"
-
-	// Exibe na tela 
-	fmt.Sprintf("<b>Projeto: %s</b><br>", V_Projeto)
-	fmt.Sprintf("<br><b>Site Estático: %s - %s</b>", V_Front, L_Front)
-	fmt.Sprintf("<br><b>API: %s - %s:</b>", V_API, L_API)
-	fmt.Sprintf("<br><b>EKS: %s - %s: </b>", V_EKS, L_EKS)
-	fmt.Sprintf("<br><b>ECS: %s - %s: </b>", V_ECS, L_ECS)
-	fmt.Sprintf("<br><b>RDS: %s - %s: </b>", V_RDS, L_RDS)
-	fmt.Sprintf("<br><b>DynamoDB: %s - %s: </b>", V_DynamoDB, L_DynamoDB)
-	fmt.Sprintf("<br><b>Lambda: %s - %s: </b>", V_Lambda, L_Lambda)
-	fmt.Sprintf("<br><b>SQS: %s - %s: </b>", V_SQS, L_SQS)
-	fmt.Sprintf("<br><b>SNS: %s - %s: </b>", V_SNS, L_SNS)
+	IMG_MSK	:= "https://brunorusso.com.br/icones/Arch_Amazon-Managed-Streaming-for-Apache-Kafka_32.png"
 
 	// Create Variables
 	V_Agora := time.Now()
@@ -221,7 +209,12 @@ func main() {
 	w.WriteString("<h2 id=\"Cap3\">3. Contribua com este projeto</h2>")
 	w.WriteString(fmt.Sprintf("<center><div class=\"texto2\">Link do projeto no GitHub: <a href=\"%s\">%s</a></div></center>", L_HOME, L_HOME))
 
-  	check(err)
+	//End Message
+	fmt.Print("Foi criado um arquivo chamado: Cloud-Wizard-Projeto.html \n")
+	fmt.Print("Abra-o e consulte as informações geradas pelo Cloud Wizard \n")
+	fmt.Print("Para mais informações, acesse: ", L_HOME)
+
+	check(err)
 //    	w.WriteString("</body></html>")
     	check(err)
     	defer f.Close()
