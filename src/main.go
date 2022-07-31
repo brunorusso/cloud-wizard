@@ -200,7 +200,7 @@ func main() {
 	w.WriteString("<br><br><hr>")
 	w.WriteString("<h2 id=\"Cap2\">2. Exemplo de Arquitetura</h2>")
 	w.WriteString("<center><table border=\"0\" width=\"90%\"><tr><td>")
-	w.WriteString(fmt.Sprintf("<a href=\"%s\"><tr><td width=\"25%\"><img src=\"%s\"></a>", L_ARQ, IMG_ARQ))
+	w.WriteString(fmt.Sprintf("<center><a href=\"%s\"><img src=\"%s\" width=\"50%\"></a></center>", L_ARQ, IMG_ARQ))
 	w.WriteString("</td></tr></table></center>")
 	w.WriteString("<br><br>")
 	//Footer
